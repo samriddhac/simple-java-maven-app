@@ -15,10 +15,6 @@ pipeline {
                 echo 'Hello, JDK'
                 sh 'java -version'
             }
-			steps {
-				echo 'maven version'
-				sh 'mvn --version'
-			}
 			post {
 				always {
 					echo 'always executed'
