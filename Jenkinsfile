@@ -10,10 +10,10 @@ pipeline {
 	}
 	stages {
 		stage('maven-test') {
-			agent { docker 'openjdk:8-jre' } 
+			/*agent { docker 'openjdk:8-jre' }*/
             steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
+                echo 'Maven step'
+                sh 'mvn --version'
             }
 			post {
 				always {
