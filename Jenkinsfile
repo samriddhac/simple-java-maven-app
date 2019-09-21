@@ -9,7 +9,7 @@ pipeline {
         cron('H */4 * * 1-5')
     }
 	options {
-		timeout(time: 1, unit: 'HOURS') }
+		timeout(time: 1, unit: 'HOURS')
 		timestamps()
 		skipStagesAfterUnstable()
 		retry(3)
@@ -81,7 +81,7 @@ pipeline {
 		stage('deploy') {
 			when {
                 branch 'master'
-                environment name: 'DEPLOY_TO', value: 'production'
+                environment name: 'DEPLOY_TO', value: 'dev'
             }
 			steps {
 				sh './jenkins/scripts/deliver.sh'
