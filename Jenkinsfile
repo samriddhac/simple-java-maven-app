@@ -9,6 +9,45 @@ pipeline {
 		skipStagesAfterUnstable()
 	}
 	stages {
+		stage('maven-test') {
+			agent { docker 'maven:3-alpine' }
+			steps {
+				echo 'maven version'
+				sh 'mvn --version'
+			}
+			post {
+				always {
+					echo 'always executed'
+				}
+				changed {
+					echo 'changed executed'
+				}
+				fixed {
+					echo 'fixed executed'
+				}
+				regression {
+					echo 'regression executed'
+				}
+				aborted {
+					echo 'aborted executed'
+				}
+				failure {
+					echo 'failure executed'
+				}
+				success {
+					echo 'success executed'
+				}
+				unstable {
+					echo 'unstable executed'
+				}
+				unsuccessful {
+					echo 'unsuccessful executed'
+				}
+				cleanup {
+					echo 'cleanup executed'
+				}
+			}
+		}
 		stage('build') {
 			steps {
 				sh 'mvn clean package -Dmaven.skipTests=true'
