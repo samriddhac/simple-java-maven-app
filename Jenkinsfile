@@ -10,7 +10,11 @@ pipeline {
 	}
 	stages {
 		stage('maven-test') {
-			agent { docker 'maven:3-alpine' }
+			agent { 
+				docker {
+					image 'maven:3-alpine'
+				} 
+			}
 			steps {
 				echo 'maven version'
 				sh 'mvn --version'
